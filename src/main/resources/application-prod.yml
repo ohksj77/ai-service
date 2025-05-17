@@ -8,3 +8,6 @@ spring:
     database: postgresql
     hibernate:
       ddl-auto: update
+
+token: # 원래는 이 상태로 public 환경에 커밋/푸시 하면 안됩니다.
+  secret-key: aaslalijhsdfgbakujshdfgaksujdhfg238475rghwegfajhsdfgjasdhfg82347asggasgadsfgagasdghjmhdev43214321asdfasdfqqqqrtfffdbv245tdfzg1
