@@ -1,0 +1,42 @@
+services:
+  ai-service:
+    build:
+      context: .
+    container_name: ai-service
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_USER_PASSWORD}
+      POSTGRES_DB: ${DB_SCHEMA}
+    networks:
+      - app-tier
+    depends_on:
+      - database
+    restart: always
+
+  database:
+    image: postgres:15.8
+    container_name: database
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_USER_PASSWORD}
+      POSTGRES_DB: ${DB_SCHEMA}
+    volumes:
+      - database:/var/lib/postgresql/data
+    networks:
+      - app-tier
+    restart: always
+    tty: true
+
+networks:
+  app-tier:
+
+volumes:
+  database: null
