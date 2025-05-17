@@ -11,6 +11,7 @@ services:
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_USER_PASSWORD}
       POSTGRES_DB: ${DB_SCHEMA}
+      API_KEY: ${API_KEY}
     networks:
       - app-tier
     depends_on:
